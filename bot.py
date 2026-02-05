@@ -3,10 +3,17 @@ import os
 from aiogram import Bot, Dispatcher, types
 from screenshot import make_screenshot, is_updated
 
-TOKEN = os.getenv("8443606906:AAHJiInWJG8d1W7N0e67fj7-GSLIOWKZzQg")
-CHAT_ID = int(os.getenv("737072371"))
+# Правильне читання змінних оточення
+BOT_TOKEN = os.getenv("8443606906:AAHJiInWJG8d1W7N0e67fj7-GSLIOWKZzQg")
+CHAT_ID = os.getenv("737072371")
 
-bot = Bot(token=TOKEN)
+# Перевірка, чи змінні взагалі задані
+if BOT_TOKEN is None or CHAT_ID is None:
+    raise ValueError("BOT_TOKEN або CHAT_ID не задані у змінних оточення!")
+
+CHAT_ID = int(CHAT_ID)  # конвертуємо в число
+
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 @dp.message(commands=["test"])
@@ -44,6 +51,6 @@ async def main():
             await checker()
         except Exception as e:
             print("ERROR:", e)
-        await asyncio.sleep(1800)
+        await asyncio.sleep(1800)  # перевірка кожні 30 хв
 
 asyncio.run(main())
