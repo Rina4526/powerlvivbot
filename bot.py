@@ -5,7 +5,7 @@ from screenshot import make_screenshot, is_updated
 
 # Правильне читання змінних оточення
 BOT_TOKEN = os.getenv("8443606906:AAHJiInWJG8d1W7N0e67fj7-GSLIOWKZzQg")
-CHAT_ID = os.getenv("737072371")
+CHAT_ID = os.getenv("8443606906")
 
 # Перевірка, чи змінні взагалі задані
 if BOT_TOKEN is None or CHAT_ID is None:
